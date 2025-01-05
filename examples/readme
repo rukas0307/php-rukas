@@ -1,0 +1,3 @@
+Functions are separated into "global" systems (fileio, networking, etc.). 
+
+These systems can be disabled at compilation by running cargo build --features disable_network, disable_fileio which will disable all functions in the "network" folder or "fileio" folder.

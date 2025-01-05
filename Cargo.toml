@@ -1,0 +1,29 @@
+[package]
+name = "php-rukas"
+version = "1.0.0"
+edition = "2021"
+authors = ["Emanuel Rukavina"]
+
+[features]
+disable_network = []
+disable_fileio = []
+disable_stupid = []
+
+[lib]
+name = "php_rukas"
+crate-type = ["cdylib"]
+
+[dependencies]
+ext-php-rs = "*"
+reqwest = { version = "0.11", features = ["blocking", "json", "multipart"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sha2 = "*" 
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+strip = "debuginfo"
+panic = "abort"
+codegen-units = 1
+debug = false
